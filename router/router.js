@@ -28,7 +28,13 @@ const {
   deleteCustomer,
   getCustomerById,
 } = require("../controllers/Customer");
-
+const {
+  getAllDiscount,
+  addDiscount,
+  updateDiscount,
+  deleteDiscount,
+  getDiscountById,
+} = require("../controllers/Discount");
 const router = express.Router();
 
 //ProductType
@@ -56,9 +62,17 @@ router.get("/StaffManagement/staffById/:Id", getStaffById);
 //Customer
 router.get("/CustomerManagement/getCustomers", getAllCustomer);
 router.post("/CustomerManagement/add", addCustomer);
-router.put("/CustomerManagement/update/:staffId", updateCustomer);
-router.delete("/CustomerManagement/delete/:staffId", deleteCustomer);
+router.put("/CustomerManagement/update/:customerId", updateCustomer);
+router.delete("/CustomerManagement/delete/:customerId", deleteCustomer);
 // router.get("/StaffManagement/Bills", getS);
 router.get("/CustomerManagement/customerById/:Id", getCustomerById);
+
+//Discount
+router.get("/DiscountManagement/getDiscounts", getAllDiscount);
+router.post("/DiscountManagement/add", addDiscount);
+router.put("/DiscountManagement/update/:discountId", updateDiscount);
+router.delete("/DiscountManagement/delete/:discountId", deleteDiscount);
+// router.get("/StaffManagement/Bills", getS);
+router.get("/DiscountManagement/discountById/:Id", getDiscountById);
 
 module.exports = router;
