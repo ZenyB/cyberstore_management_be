@@ -1,5 +1,12 @@
 const express = require("express");
-const { getAllProductTypes } = require("../controllers/ProductType");
+const { getAllCompany } = require("../controllers/Company");
+const {
+  getProductById,
+  deleteProduct,
+  updateProduct,
+  addProduct,
+  getAllProducts,
+} = require("../controllers/Product");
 const {
   getSaleProductById,
   deleteSaleProduct,
@@ -21,11 +28,18 @@ const {
   deleteCustomer,
   getCustomerById,
 } = require("../controllers/Customer");
+
 const router = express.Router();
 
 //ProductType
-router.get("/ProductType/getProductTypes", getAllProductTypes);
+router.get("/Company/getCompanys", getAllCompany);
 //Sale Product
+router.get("/Product/getProduct", getAllProducts);
+router.post("/Product/add", addProduct);
+router.put("/Product/update/:ProductId", updateProduct);
+router.delete("/Product/delete/:ProductId", deleteProduct);
+router.get("/Product/ProductById/:Id", getProductById);
+//Product
 router.get("/SaleProduct/getSaleProduct", getAllSaleProducts);
 router.post("/SaleProduct/add", addSaleProduct);
 router.put("/SaleProduct/update/:saleProductId", updateSaleProduct);
