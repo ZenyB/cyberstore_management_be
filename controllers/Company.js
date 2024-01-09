@@ -12,8 +12,8 @@ const {
 const { firebase, admin, db } = require("../config");
 const firestore = getFirestore(firebase);
 
-const getAllProductTypes = async (req, res) => {
-  const myCollection = collection(firestore, "ProductType");
+const getAllCompany = async (req, res) => {
+  const myCollection = collection(firestore, "Company");
   try {
     const querySnapshot = await getDocs(myCollection);
     const list = querySnapshot.docs.map((doc) => {
@@ -22,9 +22,9 @@ const getAllProductTypes = async (req, res) => {
       return { ...data, Id: docId };
     });
     const newList = list.sort((a, b) =>
-      a.productTypeId.localeCompare(b.productTypeId)
+      a.companyName.localeCompare(b.companyName)
     );
-    res.json({ success: true, productTypes: newList });
+    res.json({ success: true, companys: newList });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -35,7 +35,7 @@ const getAllProductTypes = async (req, res) => {
   }
 };
 
-module.exports = { getAllProductTypes };
+module.exports = { getAllCompany };
 // const uploadImage = async (img) => {
 //   try {
 //     if (img == null) return null;
