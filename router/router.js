@@ -21,6 +21,13 @@ const {
   deleteDiscount,
   getDiscountById,
 } = require("../controllers/Discount");
+const {
+  getAllGoodsReceipt,
+  addGoodsReceipt,
+  updateGoodsReceipt,
+  deleteGoodsReceipt,
+  getGoodsReceiptById,
+} = require("../controllers/GoodsReceipt");
 const router = express.Router();
 
 //ProductType
@@ -49,5 +56,13 @@ router.put("/DiscountManagement/update/:discountId", updateDiscount);
 router.delete("/DiscountManagement/delete/:discountId", deleteDiscount);
 // router.get("/StaffManagement/Bills", getS);
 router.get("/DiscountManagement/discountById/:Id", getDiscountById);
+
+//GoodsReceipt
+router.get("/GoodsReceipt/getGoodsReceipts", getAllGoodsReceipt);
+router.post("/GoodsReceipt/add", addGoodsReceipt);
+router.put("/GoodsReceipt/update/:goodsReceiptId", updateGoodsReceipt);
+router.delete("/GoodsReceipt/delete/:goodsReceiptId", deleteGoodsReceipt);
+// router.get("/StaffManagement/Bills", getS);
+router.get("/GoodsReceipt/goodsReceiptById/:Id", getGoodsReceiptById);
 
 module.exports = router;
