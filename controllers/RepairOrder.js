@@ -12,7 +12,7 @@ const {
   const { firebase } = require("../config");
   const firestore = getFirestore(firebase);
   
-  const getAllRepairOrders = async (req, res) => {
+  const getAllRepairOrder = async (req, res) => {
     const myCollection = collection(firestore, "RepairOrder");
     try {
       const querySnapshot = await getDocs(myCollection);
@@ -22,7 +22,7 @@ const {
         return { ...data, Id: docId };
       });
       const newList = list.sort((a, b) => a.repairOrderId.localeCompare(b.repairOrderId));
-      res.json({ success: true, repairOrders: newList });
+      res.json({ success: true, RepairOrders: newList });
     } catch (error) {
       res.status(500).json({
         success: false,
@@ -55,7 +55,7 @@ const {
   const updateRepairOrder = async (req, res) => {
     try {
       const myCollection = collection(firestore, "RepairOrder");
-      const docRef1 = doc(myCollection, req.params.repairOrderId);
+      const docRef1 = doc(myCollection, req.params.RepairOrderId);
       let data = req.body;
       await updateDoc(docRef1, data);
       console.log("Document RepairOrder successfully updated!");
@@ -71,7 +71,7 @@ const {
   
   const deleteRepairOrder = async (req, res) => {
     try {
-      const documentRef = doc(firestore, "RepairOrder", req.params.repairOrderId);
+      const documentRef = doc(firestore, "RepairOrder", req.params.RepairOrderId);
       await deleteDoc(documentRef);
       console.log("Document RepairOrder deleted successfully.");
       res.send({ success: true, message: "Document successfully updated!" });
@@ -89,9 +89,9 @@ const {
       const myCollection = collection(firestore, "RepairOrder");
       const docRef1 = doc(myCollection, req.params.Id);
       const documentSnapshot = await getDoc(docRef1);
-  
+      console.log(documentSnapshot.data());
       if (documentSnapshot.exists()) {
-        res.send({ success: true, repairOrderId: documentSnapshot.data() });
+        res.send({ success: true, repairOrderById: documentSnapshot.data() });
       } else {
         res.status(404).send({ success: false, message: "RepairOrder not found" });
       }
@@ -154,7 +154,7 @@ const {
   // };
   
   module.exports = {
-    getAllRepairOrders,
+    getAllRepairOrder,
     addRepairOrder,
     updateRepairOrder,
     deleteRepairOrder,

@@ -22,7 +22,7 @@ const {
         return { ...data, Id: docId };
       });
       const newList = list.sort((a, b) => a.warrantyCertificateId.localeCompare(b.warrantyCertificateId));
-      res.json({ success: true, warrantyCertificates: newList });
+      res.json({ success: true,WarrantyCertificates: newList });
     } catch (error) {
       res.status(500).json({
         success: false,
