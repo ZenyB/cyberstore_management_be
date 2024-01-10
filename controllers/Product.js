@@ -55,7 +55,7 @@ const {
   const updateProduct = async (req, res) => {
     try {
       const myCollection = collection(firestore, "Product");
-      const docRef1 = doc(myCollection, req.params.productId);
+      const docRef1 = doc(myCollection, req.params.ProductId);
       let data = req.body;
       await updateDoc(docRef1, data);
       console.log("Document Product successfully updated!");
@@ -71,7 +71,7 @@ const {
   
   const deleteProduct = async (req, res) => {
     try {
-      const documentRef = doc(firestore, "Product", req.params.productId);
+      const documentRef = doc(firestore, "Product", req.params.ProductId);
       await deleteDoc(documentRef);
       console.log("Document Product deleted successfully.");
       res.send({ success: true, message: "Document successfully updated!" });
