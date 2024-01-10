@@ -35,8 +35,33 @@ const {
   deleteDiscount,
   getDiscountById,
 } = require("../controllers/Discount");
+const {
+  getAllRepairOrder,
+  addRepairOrder,
+  updateRepairOrder,
+  deleteRepairOrder,
+  getRepairOrderById,
+} = require("../controllers/RepairOrder");
+const {
+  getAllWarrantyCertificates,
+  addWarrantyCertificate,
+  updateWarrantyCertificate,
+  deleteWarrantyCertificate,
+  getWarrantyCertificateById,
+} = require("../controllers/WarrantyCertificate");
 const router = express.Router();
-
+//RepairOrder
+router.get("/RepairOrder/getRepairOrder", getAllRepairOrder);
+router.post("/RepairOrder/add", addRepairOrder);
+router.put("/RepairOrder/update/:RepairOrderId", updateRepairOrder);
+router.delete("/RepairOrder/delete/:RepairOrderId", deleteProduct);
+router.get("/RepairOrder/RepairOrderById/:Id", getRepairOrderById);
+//Warranty
+router.get("/WarrantyCertificate/getWarrantyCertificates", getAllWarrantyCertificates);
+router.post("/WarrantyCertificate/add", addWarrantyCertificate);
+router.put("/WarrantyCertificate/update/:WarrantyCertificateId", updateWarrantyCertificate);
+router.delete("/WarrantyCertificate/delete/:WarrantyCertificateId", deleteWarrantyCertificate);
+router.get("/WarrantyCertificate/WarrantyCertificateById/:Id", getWarrantyCertificateById);
 //ProductType
 router.get("/Company/getCompanys", getAllCompany);
 //Sale Product
