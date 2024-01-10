@@ -12,7 +12,7 @@ const {
   const { firebase } = require("../config");
   const firestore = getFirestore(firebase);
   
-  const getAllRepairOrders = async (req, res) => {
+  const getAllRepairOrder = async (req, res) => {
     const myCollection = collection(firestore, "RepairOrder");
     try {
       const querySnapshot = await getDocs(myCollection);
@@ -22,7 +22,7 @@ const {
         return { ...data, Id: docId };
       });
       const newList = list.sort((a, b) => a.repairOrderId.localeCompare(b.repairOrderId));
-      res.json({ success: true, repairOrders: newList });
+      res.json({ success: true, RepairOrders: newList });
     } catch (error) {
       res.status(500).json({
         success: false,
@@ -154,7 +154,7 @@ const {
   // };
   
   module.exports = {
-    getAllRepairOrders,
+    getAllRepairOrder,
     addRepairOrder,
     updateRepairOrder,
     deleteRepairOrder,
