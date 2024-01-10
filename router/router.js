@@ -49,6 +49,13 @@ const {
   deleteWarrantyCertificate,
   getWarrantyCertificateById,
 } = require("../controllers/WarrantyCertificate");
+const {
+  getAllGoodsReceipt,
+  addGoodsReceipt,
+  updateGoodsReceipt,
+  deleteGoodsReceipt,
+  getGoodsReceiptById,
+} = require("../controllers/GoodsReceipt");
 const router = express.Router();
 //RepairOrder
 router.get("/RepairOrder/getRepairOrder", getAllRepairOrder);
@@ -57,11 +64,23 @@ router.put("/RepairOrder/update/:RepairOrderId", updateRepairOrder);
 router.delete("/RepairOrder/delete/:RepairOrderId", deleteProduct);
 router.get("/RepairOrder/RepairOrderById/:Id", getRepairOrderById);
 //Warranty
-router.get("/WarrantyCertificate/getWarrantyCertificates", getAllWarrantyCertificates);
+router.get(
+  "/WarrantyCertificate/getWarrantyCertificates",
+  getAllWarrantyCertificates
+);
 router.post("/WarrantyCertificate/add", addWarrantyCertificate);
-router.put("/WarrantyCertificate/update/:WarrantyCertificateId", updateWarrantyCertificate);
-router.delete("/WarrantyCertificate/delete/:WarrantyCertificateId", deleteWarrantyCertificate);
-router.get("/WarrantyCertificate/WarrantyCertificateById/:Id", getWarrantyCertificateById);
+router.put(
+  "/WarrantyCertificate/update/:WarrantyCertificateId",
+  updateWarrantyCertificate
+);
+router.delete(
+  "/WarrantyCertificate/delete/:WarrantyCertificateId",
+  deleteWarrantyCertificate
+);
+router.get(
+  "/WarrantyCertificate/WarrantyCertificateById/:Id",
+  getWarrantyCertificateById
+);
 //ProductType
 router.get("/Company/getCompanys", getAllCompany);
 //Sale Product
@@ -99,5 +118,13 @@ router.put("/DiscountManagement/update/:discountId", updateDiscount);
 router.delete("/DiscountManagement/delete/:discountId", deleteDiscount);
 // router.get("/StaffManagement/Bills", getS);
 router.get("/DiscountManagement/discountById/:Id", getDiscountById);
+
+//GoodsReceipt
+router.get("/GoodsReceipt/getGoodsReceipts", getAllGoodsReceipt);
+router.post("/GoodsReceipt/add", addGoodsReceipt);
+router.put("/GoodsReceipt/update/:goodsReceiptId", updateGoodsReceipt);
+router.delete("/GoodsReceipt/delete/:goodsReceiptId", deleteGoodsReceipt);
+// router.get("/StaffManagement/Bills", getS);
+router.get("/GoodsReceipt/goodsReceiptById/:Id", getGoodsReceiptById);
 
 module.exports = router;
